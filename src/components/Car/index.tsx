@@ -50,7 +50,7 @@ export function Car({data}: Props){
         </Details>
 
         <CarImage source={{uri:data.thumbnail}}
-          resizeMode="contain"
+          resizeMode="contain"//ajusta a imagem, não deixa cortar a imagem
         />
         
     </Container>
