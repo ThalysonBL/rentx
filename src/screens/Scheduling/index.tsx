@@ -1,32 +1,40 @@
 import React from "react";
 
+import { useNavigation, CommonActions } from "@react-navigation/native";
+
 import { useTheme } from "styled-components";
-import { StatusBar } from 'react-native'
+import { StatusBar } from "react-native";
 import { BackButton } from "../../components/BackButton";
 import { Button } from "../../components/Button";
 
-import { Container, Header, Title,
+import {
+  Container,
+  Header,
+  Title,
   RentalPeriod,
   DateInfo,
   DateTitle,
   DateValue,
   Content,
   Footer,
-
-
-
 } from "./styles";
 
 import ArrowSvg from "../../assets/arrow.svg";
-import { Calendars } from '../../components/Calendars';
+import { Calendars } from "../../components/Calendars/index";
 
 export function Scheduling() {
   const theme = useTheme();
 
+  const navigation = useNavigation();
+
+  function handleConfirmRental() {
+    navigation.dispatch(CommonActions.navigate({ name: "SchedulingDetails" }));
+  }
+
   return (
     <Container>
       <Header>
-        <StatusBar 
+        <StatusBar
           barStyle="light-content"
           translucent
           backgroundCoor="transparent"
@@ -52,12 +60,10 @@ export function Scheduling() {
         </RentalPeriod>
       </Header>
       <Content>
-        
         <Calendars />
-
       </Content>
       <Footer>
-        <Button title="confirmar"/>
+        <Button title="confirmar" onPress={handleConfirmRental} />
       </Footer>
     </Container>
   );

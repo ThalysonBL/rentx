@@ -1,5 +1,6 @@
-import React from 'react';
-import GasolineSvg from '../../assets/gasoline.svg'
+import React from "react";
+import GasolineSvg from "../../assets/gasoline.svg";
+import { RectButton } from "react-native-gesture-handler";
 import {
   Container,
   Details,
@@ -10,10 +11,8 @@ import {
   Price,
   Period,
   Type,
-  CarImage
-
-} from './styles';
-
+  CarImage,
+} from "./styles";
 
 interface CarData {
   brand: string;
@@ -21,38 +20,36 @@ interface CarData {
   rent: {
     period: string;
     price: number;
-  },
+  };
   thumbnail: string;
 }
-interface Props {
+interface Props extends RectButton {
   data: CarData;
 }
 
-
-export function Car({data}: Props){
+export function Car({ data, ...rest }: Props) {
   return (
-    <Container>
-        <Details>
-          <Brand>{data.brand}</Brand>
-          <Name>{data.name}</Name>  
+    <Container {...rest}>
+      <Details>
+        <Brand>{data.brand}</Brand>
+        <Name>{data.name}</Name>
 
-          <About>
-            <Rent>
-              <Period>{data.rent.period}</Period>
-              <Price>{`R$ ${data.rent.price}`}</Price>
-            </Rent>
-            
-            <Type>
-              <GasolineSvg />
-            </Type>
+        <About>
+          <Rent>
+            <Period>{data.rent.period}</Period>
+            <Price>{`R$ ${data.rent.price}`}</Price>
+          </Rent>
 
-          </About>
-        </Details>
+          <Type>
+            <GasolineSvg />
+          </Type>
+        </About>
+      </Details>
 
-        <CarImage source={{uri:data.thumbnail}}
-          resizeMode="contain"//ajusta a imagem, não deixa cortar a imagem
-        />
-        
+      <CarImage
+        source={{ uri: data.thumbnail }}
+        resizeMode="contain" //ajusta a imagem, não deixa cortar a imagem
+      />
     </Container>
-)
+  );
 }
