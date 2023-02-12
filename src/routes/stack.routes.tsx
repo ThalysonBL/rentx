@@ -12,7 +12,7 @@ const { Navigator, Screen } = createStackNavigator();
 
 export function StackRoutes() {
   return (
-    <Navigator headerMode="false">
+    <Navigator screenOptions={{ headerMode: false }}>
       <Screen name="Home" component={Home} />
       <Screen name="Scheduling" component={Scheduling} />
       <Screen name="SchedulingComplete" component={SchedulingComplete} />
