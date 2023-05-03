@@ -106,7 +106,7 @@ export function Scheduling() {
         <StatusBar
           barStyle="light-content"
           translucent
-          backgroundCoor="transparent"
+          backgroundColor="transparent"
         />
         <BackButton onPress={handleBack} color={theme.colors.shape} />
 
@@ -136,7 +136,11 @@ export function Scheduling() {
         <Calendars markedDates={markedDates} onDayPress={handleChangeDate} />
       </Content>
       <Footer>
-        <Button title="confirmar" onPress={handleConfirmRental} />
+        <Button
+          title="confirmar"
+          onPress={handleConfirmRental}
+          enabled={!!rentalPeriod.startFormatted}
+        />
       </Footer>
     </Container>
   );
